@@ -42,9 +42,9 @@ class Network extends React.Component {
           <strong className="cursor"><Topbar text='network connections' close={this.props.networkWindowClose}/></strong>
           <GreyBarExplorer />
           <div className="window-cont">
-            <Icon text='twitter' src={twitterIcon} onDoubleClick={(e) => this.openUrl('https://twitter.com/selinazawacki', e)} />
-            <Icon text='github' src={githubIcon} onDoubleClick={(e) => this.openUrl('https://github.com/szmoon', e)} />
-            <Icon text='linkedin' src={linkedinIcon} onDoubleClick={(e) => this.openUrl('https://www.linkedin.com/in/selina-chang-yi-zawacki/', e)} />
+            <Icon text='twitter' src={twitterIcon} action={(e) => this.openUrl('https://twitter.com/selinazawacki', e)} />
+            <Icon text='github' src={githubIcon} action={(e) => this.openUrl('https://github.com/szmoon', e)} />
+            <Icon text='linkedin' src={linkedinIcon} action={(e) => this.openUrl('https://www.linkedin.com/in/selina-chang-yi-zawacki/', e)} />
           </div>
         </div>
         </Draggable>

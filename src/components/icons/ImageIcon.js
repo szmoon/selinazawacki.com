@@ -6,7 +6,7 @@ const ImageIcon = createReactClass( {
   render() {
     return (
       <div className='icon-box'>
-        <img onDoubleClick={this.props.action} alt='icon' src={this.props.src} className='icon-image'/>
+        <img onDoubleClick={this.props.action} onTouchEnd={this.props.action} alt='icon' src={this.props.src} className='icon-image'/>
         <p className='icon-text'>{this.props.text}</p>
       </div>
     );
