@@ -1,8 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import { render } from 'react-dom';
+import './assets/style.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+import { Provider } from 'react-redux';
+// default  exportstore, named export history
+import store, { history } from './store';
+
+import App from './containers/App';
+
+const router = (
+    <Provider store={store}>
+      <App /> 
+    </Provider>
+)
+
+render(router, document.getElementById('mount'));
