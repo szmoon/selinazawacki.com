@@ -10,7 +10,7 @@ const defaultState = {
   aboutWindow: {
     open: false,
     focus: false,
-    left: 450,
+    left: 400,
     top: 50
   },
   aboutTxt: {
@@ -28,7 +28,7 @@ const defaultState = {
   networkWindow: {
     open: false,
     focus: false,
-    left: 400,
+    left: 370,
     top: 400
   }
 }
