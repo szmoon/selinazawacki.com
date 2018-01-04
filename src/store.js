@@ -22,7 +22,7 @@ const defaultState = {
   aboutImage: {
     open: false,
     focus: false,
-    left: 900,
+    left: 660,
     top: 150
   },
   networkWindow: {
