@@ -27,7 +27,12 @@ class App extends Component {
     super();
     this.state = {
     };
+    // this.handleDrag = this.handleDrag.bind(this);
   }
+
+  // handleDrag() {
+  //   console.log("drag");
+  // }
 
   render() {
     let About2 = connect(mapStateToProps.aboutWindow, mapDispatchToProps)(About);

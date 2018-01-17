@@ -35,9 +35,13 @@ class Network extends React.Component {
       height: 400
     };
 
+    function handleDrag() {
+      styles.zIndex = 1;
+    }
+
     if (this.props.networkWindow.open === true) {
       return (
-        <Draggable handle="strong" onDrag={this.props.handleDrag}>
+        <Draggable handle="strong" onDrag={handleDrag}>
         <div className="window" style={styles}> 
           <strong className="cursor"><Topbar text='network connections' close={this.props.networkWindowClose}/></strong>
           <GreyBarExplorer />
