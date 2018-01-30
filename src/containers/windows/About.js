@@ -11,30 +11,36 @@ class About extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      mouseBegin: [0,0],
+      zIndex: this.props.currentZ
     };
     this.handleDrag = this.handleDrag.bind(this);
     this.handleDrop = this.handleDrop.bind(this);
   }
 
   handleDrag(e) {
-    // e.dataTransfer.setData('id', 'setTheId');
-    console.log('drag');
-    // styles.zIndex = 1;
-    // this.props.setZ();
+    // console.log('currentZ',this.props.currentZ);
+    this.setState({mouseBegin: [e.screenX, e.screenY], zIndex: this.props.currentZ + 1});
   }
 
   handleDrop(e) {
-    console.log('drop');
-    e.preventDefault();
-   
+    // console.log('original', this.props.aboutWindow.position);
+    let diff = [e.screenX - this.state.mouseBegin[0], e.screenY - this.state.mouseBegin[1]];
+ 
+    let newPosition = [diff[0] + this.props.aboutWindow.position[0], diff[1] + this.props.aboutWindow.position[1]];
+
+    this.props.aboutWindowPosition(newPosition);
+    this.setState({mouseBegin: [0, 0]});
+    this.props.setZ();
   }
 
   render() {
     const styles = {
-      top: this.props.aboutWindow.top,
-      left: this.props.aboutWindow.left,
+      top: this.props.aboutWindow.position[1],
+      left: this.props.aboutWindow.position[0],
       width: 500,
-      height: 400
+      height: 400,
+      zIndex: this.state.zIndex
     };
 
     if (this.props.aboutWindow.open === true) {

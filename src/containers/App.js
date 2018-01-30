@@ -28,19 +28,17 @@ class App extends Component {
     this.state = {
       currentZ: 10
     };
-    this.handleDrag = this.handleDrag.bind(this);
+    // this.handleDrag = this.handleDrag.bind(this);
     this.setZ = this.setZ.bind(this);
   }
 
-  handleDrag() {
-    console.log("drag");
-  }
+  // handleDrag() {
+  //   console.log("drag");
+  // }
 
   setZ() {
-    console.log('setZ');
-    // let newZ = this.state.currentZ + 1;
-    // console.log('newZ', newZ);
-    // this.setState({currentZ: newZ});
+    let newZ = this.state.currentZ + 1;
+    this.setState({currentZ: newZ});
   }
 
   render() {

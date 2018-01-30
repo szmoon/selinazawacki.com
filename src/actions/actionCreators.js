@@ -12,6 +12,13 @@ export function aboutWindowClose(index) {
   }
 }
 
+export function aboutWindowPosition(index) {
+  return {
+    type: 'ABOUT_WINDOW_POSITION',
+    index
+  }
+}
+
 export function aboutTxtOpen(index) {
   return {
     type: 'ABOUT_TXT_OPEN',
