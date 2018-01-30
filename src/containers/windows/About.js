@@ -8,12 +8,27 @@ import ImageIcon from './../../components/icons/ImageIcon';
 import imageIconPhoto from './../../assets/images/icons/selina-icon.png';
 
 class About extends React.Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //   };
-  //   this.handleDrag = this.handleDrag.bind(this);
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {
+    };
+    this.handleDrag = this.handleDrag.bind(this);
+    this.handleDrop = this.handleDrop.bind(this);
+  }
+
+  handleDrag(e) {
+    // e.dataTransfer.setData('id', 'setTheId');
+    console.log('drag');
+    // styles.zIndex = 1;
+    // this.props.setZ();
+  }
+
+  handleDrop(e) {
+    console.log('drop');
+    e.preventDefault();
+   
+  }
+
   render() {
     const styles = {
       top: this.props.aboutWindow.top,
@@ -22,13 +37,9 @@ class About extends React.Component {
       height: 400
     };
 
-    function handleDrag() {
-      styles.zIndex = 1;
-    }
-
     if (this.props.aboutWindow.open === true) {
       return (
-        <Draggable handle="strong" onDrag={handleDrag}>
+        <Draggable handle="strong" onStart={this.handleDrag} onStop={this.handleDrop}>
         <div className="window" style={styles}> 
           <strong className="cursor"><Topbar text='about' close={this.props.aboutWindowClose}/></strong>
           <GreyBarExplorer />

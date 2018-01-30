@@ -26,13 +26,22 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      currentZ: 10
     };
-    // this.handleDrag = this.handleDrag.bind(this);
+    this.handleDrag = this.handleDrag.bind(this);
+    this.setZ = this.setZ.bind(this);
   }
 
-  // handleDrag() {
-  //   console.log("drag");
-  // }
+  handleDrag() {
+    console.log("drag");
+  }
+
+  setZ() {
+    console.log('setZ');
+    // let newZ = this.state.currentZ + 1;
+    // console.log('newZ', newZ);
+    // this.setState({currentZ: newZ});
+  }
 
   render() {
     let About2 = connect(mapStateToProps.aboutWindow, mapDispatchToProps)(About);
@@ -47,7 +56,7 @@ class App extends Component {
           <AboutFolder text='about' src={folderPink} alt='folder-icon' action={this.props.aboutWindowOpen}/>
           <AboutFolder text='network' src={iconNetwork} alt='network-icon' action={this.props.networkWindowOpen}/>
         </div>
-        <About2 />
+        <About2 setZ={this.setZ} currentZ={this.state.currentZ}/>
         <AboutImage2 />
         <AboutTxt2 />
         <Network2 />
