@@ -6,6 +6,7 @@ export function aboutWindowOpen(index) {
 }
 
 export function aboutWindowClose(index) {
+  console.log("trying to close");
   return {
     type: 'ABOUT_WINDOW_CLOSE',
     index

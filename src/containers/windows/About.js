@@ -14,16 +14,30 @@ class About extends React.Component {
       mouseBegin: [0,0],
       zIndex: this.props.currentZ
     };
+    this.startDrag = this.startDrag.bind(this);
     this.handleDrag = this.handleDrag.bind(this);
     this.handleDrop = this.handleDrop.bind(this);
   }
 
-  handleDrag(e) {
+  startDrag(e) {
+    // e.persist();
+    var img = new Image(); 
+    e.dataTransfer.setDragImage(img,0,0);
     // console.log('currentZ',this.props.currentZ);
     this.setState({mouseBegin: [e.screenX, e.screenY], zIndex: this.props.currentZ + 1});
   }
 
+  handleDrag(e) {
+    let diff = [e.screenX - this.state.mouseBegin[0], e.screenY - this.state.mouseBegin[1]];
+    let newPosition = [diff[0] + this.props.aboutWindow.position[0], diff[1] + this.props.aboutWindow.position[1]];
+    
+    e.target.style.top = newPosition[1];
+    e.target.style.left = newPosition[0];
+    
+  }
+
   handleDrop(e) {
+    // e.target.style.visibility = "visible";
     // console.log('original', this.props.aboutWindow.position);
     let diff = [e.screenX - this.state.mouseBegin[0], e.screenY - this.state.mouseBegin[1]];
  
@@ -32,6 +46,7 @@ class About extends React.Component {
     this.props.aboutWindowPosition(newPosition);
     this.setState({mouseBegin: [0, 0]});
     this.props.setZ();
+    
   }
 
   render() {
@@ -45,8 +60,8 @@ class About extends React.Component {
 
     if (this.props.aboutWindow.open === true) {
       return (
-        <Draggable handle="strong" onStart={this.handleDrag} onStop={this.handleDrop}>
-        <div className="window" style={styles}> 
+        // <Draggable handle="strong" onStart={this.handleDrag} onStop={this.handleDrop}>
+        <div draggable="true" onDragStart={this.startDrag} onDrag={this.handleDrag} onDragEnd={this.handleDrop} className="window" style={styles}> 
           <strong className="cursor"><Topbar text='about' close={this.props.aboutWindowClose}/></strong>
           <GreyBarExplorer />
           <div className="window-cont">
@@ -54,7 +69,7 @@ class About extends React.Component {
             <ImageIcon text='selina.png' src={imageIconPhoto} action={this.props.aboutImageOpen}/>
           </div>
         </div>
-        </Draggable>
+        // </Draggable>
       );
     } else {
       return(
