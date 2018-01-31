@@ -23,9 +23,7 @@ const defaultState = {
   },
   networkWindow: {
     open: false,
-    position: [370, 400],
-    left: 370,
-    top: 400
+    position: [370, 400]
   }
 }
 

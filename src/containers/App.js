@@ -53,10 +53,10 @@ class App extends Component {
           {/* <AboutFolder text='about' src={folderPink} alt='folder-icon' action={(e) => this.props.aboutWindowOpen(this.state.currentZ, e)}/> */}
           <AboutFolder text='network' src={iconNetwork} alt='network-icon' action={this.props.networkWindowOpen}/>
         </div>
-        <About2 setZ={this.setZ} currentZ={this.state.currentZ} aboutZ={this.state.aboutZ} />
+        <About2 aboutZ={this.state.aboutZ} setZ={this.setZ} currentZ={this.state.currentZ} />
         <AboutImage2 />
         <AboutTxt2 />
-        <Network2 setZ={this.setZ} currentZ={this.state.currentZ} networkZ={this.state.networkZ}/>
+        <Network2 networkZ={this.state.networkZ} setZ={this.setZ} currentZ={this.state.currentZ} />
         <Bottombar />
       </div>
     );

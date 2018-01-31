@@ -7,10 +7,9 @@ var exports = module.exports = {
     };
   },
 
-  aboutWindow: function(state, ownProps) {
+  aboutWindow: function(state) {
     return {
-      aboutWindow: state.aboutWindow,
-      // currentZ: ownProps.currentZ
+      aboutWindow: state.aboutWindow
     };
   },
 
