@@ -12,18 +12,31 @@ class About extends React.Component {
     super(props);
     this.state = {
       mouseBegin: [0,0],
-      zIndex: this.props.currentZ,
-      test: 0
+      aboutZ: this.props.aboutZ
     };
     this.startDrag = this.startDrag.bind(this);
     this.endDrag = this.endDrag.bind(this);
   }
 
+  // shouldComponentUpdate(nextProps) {
+  //   console.log('zIndex', this.state.zIndex, 'appZ', this.props.currentZ);
+  //   // if (this.state.zIndex < this.props.currentZ + 1) {
+  //   //   return true;
+  //   // } else {
+  //   //   return false;
+  //   // }
+  //   if (this.state.zIndex >= this.props.currentZ) {
+  //     return false;
+  //   } else {
+  //     return true;
+  //   }
+  // }
+
   startDrag(e) {
     let coords = [];
     if(e.screenX) { coords = [e.screenX, e.screenY]; } 
     else { coords = [e.changedTouches[0].clientX, e.changedTouches[0].clientY]; }
-    this.setState({mouseBegin: coords, zIndex: this.props.currentZ + 1});
+    this.setState({mouseBegin: coords, aboutZ: this.props.currentZ + 1});
   }
 
   endDrag(e) {
@@ -32,7 +45,7 @@ class About extends React.Component {
     else { diff = [e.changedTouches[0].clientX - this.state.mouseBegin[0], e.changedTouches[0].clientY - this.state.mouseBegin[1]]; }
     let newPosition = [diff[0] + this.props.aboutWindow.position[0], diff[1] + this.props.aboutWindow.position[1]];
     this.props.aboutWindowPosition(newPosition);
-    this.props.setZ();
+    this.props.setZ({aboutZ: this.state.aboutZ});
   }
 
   render() {
@@ -41,7 +54,7 @@ class About extends React.Component {
       left: this.props.aboutWindow.position[0],
       width: 500,
       height: 400,
-      zIndex: this.state.zIndex
+      zIndex: this.state.aboutZ
     };
 
     if (this.props.aboutWindow.open === true) {

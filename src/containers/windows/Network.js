@@ -9,39 +9,60 @@ import linkedinIcon from './../../assets/images/icons/linkedin-icon.png';
 import githubIcon from './../../assets/images/icons/github-icon.png';
 
 class Network extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    this.state = {
+      mouseBegin: [0,0],
+      networkZ: this.props.networkZ
+    };
     this.openUrl = this.openUrl.bind(this);
+    this.startDrag = this.startDrag.bind(this);
+    this.endDrag = this.endDrag.bind(this);
   }
-  
+
   // shouldComponentUpdate(nextProps) {
-  //   if (this.props.networkWindow.open !== nextProps.networkWindow.open) {
-  //     return true;
-  //   } else {
+  //   console.log('zIndex', this.state.zIndex, 'appZ', this.props.currentZ);
+
+  //   if (this.state.zIndex >= this.props.currentZ) {
   //     return false;
+  //   } else {
+  //     return true;
   //   }
   // }
-
+  
   openUrl(url) {
     var win = window.open(url, '_blank');
     win.focus();
   }
 
+  startDrag(e) {
+    let coords = [];
+    if(e.screenX) { coords = [e.screenX, e.screenY]; } 
+    else { coords = [e.changedTouches[0].clientX, e.changedTouches[0].clientY]; }
+    this.setState({mouseBegin: coords, networkZ: this.props.currentZ + 1});
+  }
+
+  endDrag(e) {
+    let diff;
+    if (e.screenX) { diff = [e.screenX - this.state.mouseBegin[0], e.screenY - this.state.mouseBegin[1]]; }
+    else { diff = [e.changedTouches[0].clientX - this.state.mouseBegin[0], e.changedTouches[0].clientY - this.state.mouseBegin[1]]; }
+    let newPosition = [diff[0] + this.props.networkWindow.position[0], diff[1] + this.props.networkWindow.position[1]];
+    this.props.networkWindowPosition(newPosition);
+    this.props.setZ({networkZ: this.state.networkZ});
+  }
+
   render() {
     const styles = {
-      top: this.props.networkWindow.top,
-      left: this.props.networkWindow.left,
+      top: this.props.networkWindow.position[1],
+      left: this.props.networkWindow.position[0],
       width: 500,
-      height: 400
+      height: 400,
+      zIndex: this.state.networkZ
     };
-
-    function handleDrag() {
-      styles.zIndex = 1;
-    }
 
     if (this.props.networkWindow.open === true) {
       return (
-        <Draggable handle="strong" onDrag={handleDrag}>
+        <Draggable handle="strong" onStart={this.startDrag} onStop={this.endDrag}>
         <div className="window" style={styles}> 
           <strong className="cursor"><Topbar text='network connections' close={this.props.networkWindowClose}/></strong>
           <GreyBarExplorer />

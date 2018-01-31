@@ -26,15 +26,17 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      currentZ: 10,
-      test: 1
+      currentZ: 0,
+      aboutZ: 0,
+      networkZ: 0
     };
     this.setZ = this.setZ.bind(this);
   }
 
-  setZ() {
+  setZ(obj) {
     let newZ = this.state.currentZ + 1;
-    this.setState({currentZ: newZ});
+    obj.currentZ = newZ;
+    this.setState(obj);
   }
 
   render() {
@@ -48,12 +50,13 @@ class App extends Component {
       <div>
         <div className='divblock'>
           <AboutFolder text='about' src={folderPink} alt='folder-icon' action={this.props.aboutWindowOpen}/>
+          {/* <AboutFolder text='about' src={folderPink} alt='folder-icon' action={(e) => this.props.aboutWindowOpen(this.state.currentZ, e)}/> */}
           <AboutFolder text='network' src={iconNetwork} alt='network-icon' action={this.props.networkWindowOpen}/>
         </div>
-        <About2 setZ={this.setZ} currentZ={this.state.currentZ} testState={this.testState}/>
+        <About2 setZ={this.setZ} currentZ={this.state.currentZ} aboutZ={this.state.aboutZ} />
         <AboutImage2 />
         <AboutTxt2 />
-        <Network2 />
+        <Network2 setZ={this.setZ} currentZ={this.state.currentZ} networkZ={this.state.networkZ}/>
         <Bottombar />
       </div>
     );

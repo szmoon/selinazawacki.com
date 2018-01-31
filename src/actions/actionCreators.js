@@ -61,3 +61,10 @@ export function networkWindowClose(index) {
     index
   }
 }
+
+export function networkWindowPosition(index) {
+  return {
+    type: 'NETWORK_WINDOW_POSITION',
+    index
+  }
+}

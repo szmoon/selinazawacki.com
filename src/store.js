@@ -9,9 +9,7 @@ import rootReducer from './reducers/index';
 const defaultState = {
   aboutWindow: {
     open: false,
-    position:[400, 50],
-    left: 400,
-    top: 50
+    position:[400, 50]
   },
   aboutTxt: {
     open: false,
@@ -25,6 +23,7 @@ const defaultState = {
   },
   networkWindow: {
     open: false,
+    position: [370, 400],
     left: 370,
     top: 400
   }
