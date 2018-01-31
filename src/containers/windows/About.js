@@ -18,20 +18,6 @@ class About extends React.Component {
     this.endDrag = this.endDrag.bind(this);
   }
 
-  // shouldComponentUpdate(nextProps) {
-  //   console.log('zIndex', this.state.zIndex, 'appZ', this.props.currentZ);
-  //   // if (this.state.zIndex < this.props.currentZ + 1) {
-  //   //   return true;
-  //   // } else {
-  //   //   return false;
-  //   // }
-  //   if (this.state.zIndex >= this.props.currentZ) {
-  //     return false;
-  //   } else {
-  //     return true;
-  //   }
-  // }
-
   startDrag(e) {
     let coords = [];
     if(e.screenX) { coords = [e.screenX, e.screenY]; } 

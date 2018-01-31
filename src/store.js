@@ -13,13 +13,13 @@ const defaultState = {
   },
   aboutTxt: {
     open: false,
+    position:[80, 300],
     left: 80,
     top: 300
   },
   aboutImage: {
     open: false,
-    left: 660,
-    top: 150
+    position:[660, 150]
   },
   networkWindow: {
     open: false,

@@ -28,6 +28,8 @@ class App extends Component {
     this.state = {
       currentZ: 0,
       aboutZ: 0,
+      aboutImageZ: 0,
+      aboutTxtZ: 0,
       networkZ: 0
     };
     this.setZ = this.setZ.bind(this);
@@ -54,8 +56,8 @@ class App extends Component {
           <AboutFolder text='network' src={iconNetwork} alt='network-icon' action={this.props.networkWindowOpen}/>
         </div>
         <About2 aboutZ={this.state.aboutZ} setZ={this.setZ} currentZ={this.state.currentZ} />
-        <AboutImage2 />
-        <AboutTxt2 />
+        <AboutImage2 aboutImageZ={this.state.aboutImageZ} setZ={this.setZ} currentZ={this.state.currentZ} />
+        <AboutTxt2 aboutTxtZ={this.state.aboutTxtZ} setZ={this.setZ} currentZ={this.state.currentZ} />
         <Network2 networkZ={this.state.networkZ} setZ={this.setZ} currentZ={this.state.currentZ} />
         <Bottombar />
       </div>
