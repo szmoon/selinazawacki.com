@@ -12,41 +12,27 @@ class About extends React.Component {
     super(props);
     this.state = {
       mouseBegin: [0,0],
-      zIndex: this.props.currentZ
+      zIndex: this.props.currentZ,
+      test: 0
     };
     this.startDrag = this.startDrag.bind(this);
-    this.handleDrag = this.handleDrag.bind(this);
-    this.handleDrop = this.handleDrop.bind(this);
+    this.endDrag = this.endDrag.bind(this);
   }
 
   startDrag(e) {
-    // e.persist();
-    var img = new Image(); 
-    e.dataTransfer.setDragImage(img,0,0);
-    // console.log('currentZ',this.props.currentZ);
-    this.setState({mouseBegin: [e.screenX, e.screenY], zIndex: this.props.currentZ + 1});
+    let coords = [];
+    if(e.screenX) { coords = [e.screenX, e.screenY]; } 
+    else { coords = [e.changedTouches[0].clientX, e.changedTouches[0].clientY]; }
+    this.setState({mouseBegin: coords, zIndex: this.props.currentZ + 1});
   }
 
-  handleDrag(e) {
-    let diff = [e.screenX - this.state.mouseBegin[0], e.screenY - this.state.mouseBegin[1]];
+  endDrag(e) {
+    let diff;
+    if (e.screenX) { diff = [e.screenX - this.state.mouseBegin[0], e.screenY - this.state.mouseBegin[1]]; }
+    else { diff = [e.changedTouches[0].clientX - this.state.mouseBegin[0], e.changedTouches[0].clientY - this.state.mouseBegin[1]]; }
     let newPosition = [diff[0] + this.props.aboutWindow.position[0], diff[1] + this.props.aboutWindow.position[1]];
-    
-    e.target.style.top = newPosition[1];
-    e.target.style.left = newPosition[0];
-    
-  }
-
-  handleDrop(e) {
-    // e.target.style.visibility = "visible";
-    // console.log('original', this.props.aboutWindow.position);
-    let diff = [e.screenX - this.state.mouseBegin[0], e.screenY - this.state.mouseBegin[1]];
- 
-    let newPosition = [diff[0] + this.props.aboutWindow.position[0], diff[1] + this.props.aboutWindow.position[1]];
-
     this.props.aboutWindowPosition(newPosition);
-    this.setState({mouseBegin: [0, 0]});
     this.props.setZ();
-    
   }
 
   render() {
@@ -60,16 +46,16 @@ class About extends React.Component {
 
     if (this.props.aboutWindow.open === true) {
       return (
-        // <Draggable handle="strong" onStart={this.handleDrag} onStop={this.handleDrop}>
-        <div draggable="true" onDragStart={this.startDrag} onDrag={this.handleDrag} onDragEnd={this.handleDrop} className="window" style={styles}> 
-          <strong className="cursor"><Topbar text='about' close={this.props.aboutWindowClose}/></strong>
-          <GreyBarExplorer />
-          <div className="window-cont">
-            <TxtIcon text='about.txt' action={this.props.aboutTxtOpen}/>
-            <ImageIcon text='selina.png' src={imageIconPhoto} action={this.props.aboutImageOpen}/>
+        <Draggable handle="strong" onStart={this.startDrag} onStop={this.endDrag}>
+          <div  className="window" style={styles}> 
+            <strong className="cursor"><Topbar text='about' close={this.props.aboutWindowClose}/></strong>
+            <GreyBarExplorer />
+            <div className="window-cont">
+              <TxtIcon text='about.txt' action={this.props.aboutTxtOpen}/>
+              <ImageIcon text='selina.png' src={imageIconPhoto} action={this.props.aboutImageOpen}/>
+            </div>
           </div>
-        </div>
-        // </Draggable>
+        </Draggable>
       );
     } else {
       return(

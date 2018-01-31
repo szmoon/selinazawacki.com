@@ -26,15 +26,11 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      currentZ: 10
+      currentZ: 10,
+      test: 1
     };
-    // this.handleDrag = this.handleDrag.bind(this);
     this.setZ = this.setZ.bind(this);
   }
-
-  // handleDrag() {
-  //   console.log("drag");
-  // }
 
   setZ() {
     let newZ = this.state.currentZ + 1;
@@ -54,7 +50,7 @@ class App extends Component {
           <AboutFolder text='about' src={folderPink} alt='folder-icon' action={this.props.aboutWindowOpen}/>
           <AboutFolder text='network' src={iconNetwork} alt='network-icon' action={this.props.networkWindowOpen}/>
         </div>
-        <About2 setZ={this.setZ} currentZ={this.state.currentZ}/>
+        <About2 setZ={this.setZ} currentZ={this.state.currentZ} testState={this.testState}/>
         <AboutImage2 />
         <AboutTxt2 />
         <Network2 />
