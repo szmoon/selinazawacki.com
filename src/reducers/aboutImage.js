@@ -1,7 +1,7 @@
 function aboutImage(state = {}, action) {
   switch(action.type) {
     case 'ABOUT_IMAGE_OPEN' :
-      return { ...state, image: true, position: [660, 150] };
+      return { ...state, image: true, position: [660, 150], zIndex: action.zIndex };
     case 'ABOUT_IMAGE_CLOSE' :
       return { ...state, image: false };
     case 'ABOUT_IMAGE_POSITION' :

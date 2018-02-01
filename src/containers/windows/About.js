@@ -33,7 +33,6 @@ class About extends React.Component {
     this.props.aboutWindowPosition(newPosition);
     this.props.incrementZ();
   }
-
   render() {
     const styles = {
       top: this.props.aboutWindow.position[1],
@@ -50,8 +49,8 @@ class About extends React.Component {
             <strong className="cursor"><Topbar text='about' close={this.props.aboutWindowClose}/></strong>
             <GreyBarExplorer />
             <div className="window-cont">
-              <TxtIcon text='about.txt' action={this.props.aboutTxtOpen}/>
-              <ImageIcon text='selina.png' src={imageIconPhoto} action={this.props.aboutImageOpen}/>
+              <TxtIcon text='about.txt' action={(e) => this.props.aboutTxtOpen(this.props.currentZ, e)} incrementZ={this.incrementZ}/>
+              <ImageIcon text='selina.png' src={imageIconPhoto} action={(e) => this.props.aboutImageOpen(this.props.currentZ, e)} incrementZ={this.incrementZ}/>
             </div>
           </div>
         </Draggable>

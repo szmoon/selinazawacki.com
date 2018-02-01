@@ -1,7 +1,7 @@
-export function aboutWindowOpen(index) {
+export function aboutWindowOpen(zIndex) {
   return {
     type: 'ABOUT_WINDOW_OPEN',
-    index
+    zIndex
   }
 }
 
@@ -27,10 +27,10 @@ export function aboutWindowZIndex(zIndex) {
   }
 }
 
-export function aboutTxtOpen(index) {
+export function aboutTxtOpen(zIndex) {
   return {
     type: 'ABOUT_TXT_OPEN',
-    index
+    zIndex
   }
 }
 
@@ -55,10 +55,10 @@ export function aboutTxtZIndex(zIndex) {
   }
 }
 
-export function aboutImageOpen(index) {
+export function aboutImageOpen(zIndex) {
   return {
     type: 'ABOUT_IMAGE_OPEN',
-    index
+    zIndex
   }
 }
 
@@ -83,10 +83,10 @@ export function aboutImageZIndex(zIndex) {
   }
 }
 
-export function networkWindowOpen(index) {
+export function networkWindowOpen(zIndex) {
   return {
     type: 'NETWORK_WINDOW_OPEN',
-    index
+    zIndex
   }
 }
 

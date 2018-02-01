@@ -1,7 +1,7 @@
 function aboutWindow(state = {}, action) {
   switch(action.type) {
     case 'ABOUT_WINDOW_OPEN' :
-      return { ...state, open: true, position: [400, 50] };
+      return { ...state, open: true, position: [400, 50], zIndex: action.zIndex };
     case 'ABOUT_WINDOW_CLOSE' :
       return { ...state, open: false };
     case 'ABOUT_WINDOW_POSITION' :
