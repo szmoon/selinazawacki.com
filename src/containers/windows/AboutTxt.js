@@ -51,7 +51,7 @@ class AboutTxt extends React.Component {
           <p>Always looking for opportunities to do outreach to get young women, minorities and low income students interested in technology.</p>
           <br></br>
           <p>Website created using React/Redux. Continually adding on to it in my spare time. :)</p>
-          <p>Last updated: 1/30/18</p>
+          <p>Last updated: 2/1/18</p>
           </div>
         </div>
         </Draggable>

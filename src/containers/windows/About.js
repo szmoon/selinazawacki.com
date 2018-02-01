@@ -15,6 +15,7 @@ class About extends React.Component {
     };
     this.startDrag = this.startDrag.bind(this);
     this.endDrag = this.endDrag.bind(this);
+    this.clickWindow = this.clickWindow.bind(this);
   }
 
   startDrag(e) {
@@ -33,6 +34,13 @@ class About extends React.Component {
     this.props.aboutWindowPosition(newPosition);
     this.props.incrementZ();
   }
+
+  clickWindow() {
+    console.log("clickWindow");
+    this.props.aboutWindowZIndex(this.props.currentZ + 1);
+    this.props.incrementZ();
+  }
+
   render() {
     const styles = {
       top: this.props.aboutWindow.position[1],
@@ -45,7 +53,7 @@ class About extends React.Component {
     if (this.props.aboutWindow.open === true) {
       return (
         <Draggable handle="strong" onStart={this.startDrag} onStop={this.endDrag}>
-          <div  className="window" style={styles}> 
+          <div className="window" style={styles}> 
             <strong className="cursor"><Topbar text='about' close={this.props.aboutWindowClose}/></strong>
             <GreyBarExplorer />
             <div className="window-cont">

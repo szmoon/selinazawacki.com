@@ -3,7 +3,7 @@ import Draggable from 'react-draggable';
 
 import { Topbar } from './../../components/windows/Topbar';
 import { GreyBarExplorer } from './../../components/windows/GreyBarExplorer';
-import Icon from './../../components/icons/Icon';
+import LinkIcon from './../../components/icons/LinkIcon';
 import twitterIcon from './../../assets/images/icons/twitter-icon.png';
 import linkedinIcon from './../../assets/images/icons/linkedin-icon.png';
 import githubIcon from './../../assets/images/icons/github-icon.png';
@@ -57,9 +57,9 @@ class Network extends React.Component {
           <strong className="cursor"><Topbar text='network connections' close={this.props.networkWindowClose}/></strong>
           <GreyBarExplorer />
           <div className="window-cont">
-            <Icon text='twitter' src={twitterIcon} action={(e) => this.openUrl('https://twitter.com/selinazawacki', e)} />
-            <Icon text='github' src={githubIcon} action={(e) => this.openUrl('https://github.com/szmoon', e)} />
-            <Icon text='linkedin' src={linkedinIcon} action={(e) => this.openUrl('https://www.linkedin.com/in/selina-chang-yi-zawacki/', e)} />
+            <LinkIcon text='twitter' src={twitterIcon} action={(e) => this.openUrl('https://twitter.com/selinazawacki', e)} />
+            <LinkIcon text='github' src={githubIcon} action={(e) => this.openUrl('https://github.com/szmoon', e)} />
+            <LinkIcon text='linkedin' src={linkedinIcon} action={(e) => this.openUrl('https://www.linkedin.com/in/selina-chang-yi-zawacki/', e)} />
           </div>
         </div>
         </Draggable>
