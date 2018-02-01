@@ -32,6 +32,7 @@ class App extends Component {
   }
 
   incrementZ() {
+    console.log("increment!");
     this.setState({currentZ: this.state.currentZ + 1});
   }
 
@@ -45,9 +46,9 @@ class App extends Component {
     return (
       <div>
         <div className='divblock'>
-          <AboutFolder text='about' src={folderPink} alt='folder-icon' action={this.props.aboutWindowOpen}/>
+          <AboutFolder text='about' src={folderPink} alt='folder-icon' action={(e) => this.props.aboutWindowOpen(this.state.currentZ, e)} incrementZ={this.incrementZ}/>
           {/* <AboutFolder text='about' src={folderPink} alt='folder-icon' action={(e) => this.props.aboutWindowOpen(this.state.currentZ, e)}/> */}
-          <AboutFolder text='network' src={iconNetwork} alt='network-icon' action={this.props.networkWindowOpen}/>
+          <AboutFolder text='network' src={iconNetwork} alt='network-icon' action={this.props.networkWindowOpen} incrementZ={this.incrementZ}/>
         </div>
         <About2 incrementZ={this.incrementZ} currentZ={this.state.currentZ} />
         <AboutImage2 incrementZ={this.incrementZ} currentZ={this.state.currentZ} />
