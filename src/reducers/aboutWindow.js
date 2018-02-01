@@ -5,8 +5,9 @@ function aboutWindow(state = {}, action) {
     case 'ABOUT_WINDOW_CLOSE' :
       return { ...state, open: false };
     case 'ABOUT_WINDOW_POSITION' :
-      // console.log("action.index", action.index);
       return { ...state, position: action.index };
+    case 'ABOUT_WINDOW_ZINDEX' :
+      return { ...state, zIndex: action.zIndex };
     case 'ABOUT_TXT_OPEN' :
       return { ...state, txt: true };
     case 'ABOUT_TXT_CLOSE' :

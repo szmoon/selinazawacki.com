@@ -9,21 +9,23 @@ import rootReducer from './reducers/index';
 const defaultState = {
   aboutWindow: {
     open: false,
-    position:[400, 50]
+    position:[400, 50],
+    zIndex: 0
   },
   aboutTxt: {
     open: false,
     position:[80, 300],
-    left: 80,
-    top: 300
+    zIndex: 0
   },
   aboutImage: {
     open: false,
-    position:[660, 150]
+    position:[660, 150],
+    zIndex: 0
   },
   networkWindow: {
     open: false,
-    position: [370, 400]
+    position: [370, 400],
+    zIndex: 0
   }
 }
 

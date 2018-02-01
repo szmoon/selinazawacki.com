@@ -8,18 +8,18 @@ class AboutTxt extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      mouseBegin: [0,0],
-      aboutTxtZ: this.props.aboutTxtZ
+      mouseBegin: [0,0]
     };
     this.startDrag = this.startDrag.bind(this);
     this.endDrag = this.endDrag.bind(this);
   }
 
   startDrag(e) {
+    this.props.aboutTxtZIndex(this.props.currentZ + 1);
     let coords = [];
     if(e.screenX) { coords = [e.screenX, e.screenY]; } 
     else { coords = [e.changedTouches[0].clientX, e.changedTouches[0].clientY]; }
-    this.setState({mouseBegin: coords, aboutTxtZ: this.props.currentZ + 1});
+    this.setState({mouseBegin: coords});
   }
 
   endDrag(e) {
@@ -28,7 +28,7 @@ class AboutTxt extends React.Component {
     else { diff = [e.changedTouches[0].clientX - this.state.mouseBegin[0], e.changedTouches[0].clientY - this.state.mouseBegin[1]]; }
     let newPosition = [diff[0] + this.props.aboutTxt.position[0], diff[1] + this.props.aboutTxt.position[1]];
     this.props.aboutTxtPosition(newPosition);
-    this.props.setZ({aboutTxtZ: this.state.aboutTxtZ});
+    this.props.incrementZ();
   }
 
   render() {
@@ -37,7 +37,7 @@ class AboutTxt extends React.Component {
       left: this.props.aboutTxt.position[0],
       width: 400,
       height: 400,
-      zIndex: this.state.aboutTxtZ
+      zIndex: this.props.aboutTxt.zIndex
     };
     if (this.props.aboutTxt.txt === true) {
       return (

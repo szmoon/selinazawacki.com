@@ -26,19 +26,13 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      currentZ: 0,
-      aboutZ: 0,
-      aboutImageZ: 0,
-      aboutTxtZ: 0,
-      networkZ: 0
+      currentZ: 0
     };
-    this.setZ = this.setZ.bind(this);
+    this.incrementZ = this.incrementZ.bind(this);
   }
 
-  setZ(obj) {
-    let newZ = this.state.currentZ + 1;
-    obj.currentZ = newZ;
-    this.setState(obj);
+  incrementZ() {
+    this.setState({currentZ: this.state.currentZ + 1});
   }
 
   render() {
@@ -55,10 +49,10 @@ class App extends Component {
           {/* <AboutFolder text='about' src={folderPink} alt='folder-icon' action={(e) => this.props.aboutWindowOpen(this.state.currentZ, e)}/> */}
           <AboutFolder text='network' src={iconNetwork} alt='network-icon' action={this.props.networkWindowOpen}/>
         </div>
-        <About2 aboutZ={this.state.aboutZ} setZ={this.setZ} currentZ={this.state.currentZ} />
-        <AboutImage2 aboutImageZ={this.state.aboutImageZ} setZ={this.setZ} currentZ={this.state.currentZ} />
-        <AboutTxt2 aboutTxtZ={this.state.aboutTxtZ} setZ={this.setZ} currentZ={this.state.currentZ} />
-        <Network2 networkZ={this.state.networkZ} setZ={this.setZ} currentZ={this.state.currentZ} />
+        <About2 incrementZ={this.incrementZ} currentZ={this.state.currentZ} />
+        <AboutImage2 incrementZ={this.incrementZ} currentZ={this.state.currentZ} />
+        <AboutTxt2 aboutTxtZ={this.state.aboutTxtZ} incrementZ={this.incrementZ} currentZ={this.state.currentZ} />
+        <Network2 networkZ={this.state.networkZ} incrementZ={this.incrementZ} currentZ={this.state.currentZ} />
         <Bottombar />
       </div>
     );

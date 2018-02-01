@@ -6,6 +6,8 @@ function networkWindow(state = {}, action) {
       return { ...state, open: false };
     case 'NETWORK_WINDOW_POSITION' :
       return { ...state, position: action.index };
+    case 'NETWORK_WINDOW_ZINDEX' :
+      return { ...state, zIndex: action.zIndex };
     default:
       return state;
   }

@@ -11,18 +11,18 @@ class About extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      mouseBegin: [0,0],
-      aboutZ: this.props.aboutZ
+      mouseBegin: [0,0]
     };
     this.startDrag = this.startDrag.bind(this);
     this.endDrag = this.endDrag.bind(this);
   }
 
   startDrag(e) {
+    this.props.aboutWindowZIndex(this.props.currentZ + 1);
     let coords = [];
     if(e.screenX) { coords = [e.screenX, e.screenY]; } 
     else { coords = [e.changedTouches[0].clientX, e.changedTouches[0].clientY]; }
-    this.setState({mouseBegin: coords, aboutZ: this.props.currentZ + 1});
+    this.setState({mouseBegin: coords});
   }
 
   endDrag(e) {
@@ -31,7 +31,7 @@ class About extends React.Component {
     else { diff = [e.changedTouches[0].clientX - this.state.mouseBegin[0], e.changedTouches[0].clientY - this.state.mouseBegin[1]]; }
     let newPosition = [diff[0] + this.props.aboutWindow.position[0], diff[1] + this.props.aboutWindow.position[1]];
     this.props.aboutWindowPosition(newPosition);
-    this.props.setZ({aboutZ: this.state.aboutZ});
+    this.props.incrementZ();
   }
 
   render() {
@@ -40,7 +40,7 @@ class About extends React.Component {
       left: this.props.aboutWindow.position[0],
       width: 500,
       height: 400,
-      zIndex: this.state.aboutZ
+      zIndex: this.props.aboutWindow.zIndex
     };
 
     if (this.props.aboutWindow.open === true) {

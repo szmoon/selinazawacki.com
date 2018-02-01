@@ -20,6 +20,13 @@ export function aboutWindowPosition(index) {
   }
 }
 
+export function aboutWindowZIndex(zIndex) {
+  return {
+    type: 'ABOUT_WINDOW_ZINDEX',
+    zIndex
+  }
+}
+
 export function aboutTxtOpen(index) {
   return {
     type: 'ABOUT_TXT_OPEN',
@@ -38,6 +45,13 @@ export function aboutTxtPosition(index) {
   return {
     type: 'ABOUT_TXT_POSITION',
     index
+  }
+}
+
+export function aboutTxtZIndex(zIndex) {
+  return {
+    type: 'ABOUT_TXT_ZINDEX',
+    zIndex
   }
 }
 
@@ -62,6 +76,13 @@ export function aboutImagePosition(index) {
   }
 }
 
+export function aboutImageZIndex(zIndex) {
+  return {
+    type: 'ABOUT_IMAGE_ZINDEX',
+    zIndex
+  }
+}
+
 export function networkWindowOpen(index) {
   return {
     type: 'NETWORK_WINDOW_OPEN',
@@ -80,5 +101,12 @@ export function networkWindowPosition(index) {
   return {
     type: 'NETWORK_WINDOW_POSITION',
     index
+  }
+}
+
+export function networkWindowZIndex(zIndex) {
+  return {
+    type: 'NETWORK_WINDOW_ZINDEX',
+    zIndex
   }
 }

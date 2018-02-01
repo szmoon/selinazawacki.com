@@ -6,6 +6,8 @@ function aboutImage(state = {}, action) {
       return { ...state, image: false };
     case 'ABOUT_IMAGE_POSITION' :
       return { ...state, position: action.index };
+    case 'ABOUT_IMAGE_ZINDEX' :
+      return { ...state, zIndex: action.zIndex };
     default:
       return state;
   }

@@ -12,23 +12,12 @@ class Network extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      mouseBegin: [0,0],
-      networkZ: this.props.networkZ
+      mouseBegin: [0,0]
     };
     this.openUrl = this.openUrl.bind(this);
     this.startDrag = this.startDrag.bind(this);
     this.endDrag = this.endDrag.bind(this);
   }
-
-  // shouldComponentUpdate(nextProps) {
-  //   console.log('zIndex', this.state.zIndex, 'appZ', this.props.currentZ);
-
-  //   if (this.state.zIndex >= this.props.currentZ) {
-  //     return false;
-  //   } else {
-  //     return true;
-  //   }
-  // }
   
   openUrl(url) {
     var win = window.open(url, '_blank');
@@ -36,10 +25,11 @@ class Network extends React.Component {
   }
 
   startDrag(e) {
+    this.props.networkWindowZIndex(this.props.currentZ + 1);
     let coords = [];
     if(e.screenX) { coords = [e.screenX, e.screenY]; } 
     else { coords = [e.changedTouches[0].clientX, e.changedTouches[0].clientY]; }
-    this.setState({mouseBegin: coords, networkZ: this.props.currentZ + 1});
+    this.setState({mouseBegin: coords});
   }
 
   endDrag(e) {
@@ -48,7 +38,7 @@ class Network extends React.Component {
     else { diff = [e.changedTouches[0].clientX - this.state.mouseBegin[0], e.changedTouches[0].clientY - this.state.mouseBegin[1]]; }
     let newPosition = [diff[0] + this.props.networkWindow.position[0], diff[1] + this.props.networkWindow.position[1]];
     this.props.networkWindowPosition(newPosition);
-    this.props.setZ({networkZ: this.state.networkZ});
+    this.props.incrementZ();
   }
 
   render() {
@@ -57,7 +47,7 @@ class Network extends React.Component {
       left: this.props.networkWindow.position[0],
       width: 500,
       height: 400,
-      zIndex: this.state.networkZ
+      zIndex: this.props.networkWindow.zIndex
     };
 
     if (this.props.networkWindow.open === true) {

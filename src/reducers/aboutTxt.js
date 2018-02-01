@@ -6,6 +6,8 @@ function aboutTxt(state = {}, action) {
       return { ...state, txt: false };
     case 'ABOUT_TXT_POSITION' :
       return { ...state, position: action.index };
+    case 'ABOUT_TXT_ZINDEX' :
+      return { ...state, zIndex: action.zIndex };
     default:
       return state;
   }
