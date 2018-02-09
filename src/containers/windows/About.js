@@ -36,7 +36,6 @@ class About extends React.Component {
   }
 
   clickWindow() {
-    console.log("clickWindow");
     this.props.aboutWindowZIndex(this.props.currentZ + 1);
     this.props.incrementZ();
   }
@@ -55,8 +54,11 @@ class About extends React.Component {
         <Draggable handle="strong" onStart={this.startDrag} onStop={this.endDrag}>
           <div className="window" style={styles}> 
             <strong className="cursor"><Topbar text='about' close={this.props.aboutWindowClose}/></strong>
-            <GreyBarExplorer />
-            <div className="window-cont">
+            <div className="clickable-icons" onClick={this.clickWindow}>
+              <GreyBarExplorer />
+              <div className="window-cont"></div>
+            </div>
+            <div className="icon-container">
               <TxtIcon text='about.txt' action={(e) => this.props.aboutTxtOpen(this.props.currentZ, e)} incrementZ={this.incrementZ}/>
               <ImageIcon text='selina.png' src={imageIconPhoto} action={(e) => this.props.aboutImageOpen(this.props.currentZ, e)} incrementZ={this.incrementZ}/>
             </div>
@@ -68,7 +70,6 @@ class About extends React.Component {
         null
       );
     }
-    
   }
 };
 

@@ -17,6 +17,7 @@ class Network extends React.Component {
     this.openUrl = this.openUrl.bind(this);
     this.startDrag = this.startDrag.bind(this);
     this.endDrag = this.endDrag.bind(this);
+    this.clickWindow = this.clickWindow.bind(this);
   }
   
   openUrl(url) {
@@ -41,6 +42,11 @@ class Network extends React.Component {
     this.props.incrementZ();
   }
 
+  clickWindow() {
+    this.props.networkWindowZIndex(this.props.currentZ + 1);
+    this.props.incrementZ();
+  }
+
   render() {
     const styles = {
       top: this.props.networkWindow.position[1],
@@ -55,8 +61,11 @@ class Network extends React.Component {
         <Draggable handle="strong" onStart={this.startDrag} onStop={this.endDrag}>
         <div className="window" style={styles}> 
           <strong className="cursor"><Topbar text='network connections' close={this.props.networkWindowClose}/></strong>
-          <GreyBarExplorer />
-          <div className="window-cont">
+          <div className="clickable-icons" onClick={this.clickWindow}>
+            <GreyBarExplorer />
+            <div className="window-cont"></div>
+          </div>
+          <div className="icon-container">
             <LinkIcon text='twitter' src={twitterIcon} action={(e) => this.openUrl('https://twitter.com/selinazawacki', e)} />
             <LinkIcon text='github' src={githubIcon} action={(e) => this.openUrl('https://github.com/szmoon', e)} />
             <LinkIcon text='linkedin' src={linkedinIcon} action={(e) => this.openUrl('https://www.linkedin.com/in/selina-chang-yi-zawacki/', e)} />
@@ -69,7 +78,6 @@ class Network extends React.Component {
         null
       );
     }
-    
   }
 };
 

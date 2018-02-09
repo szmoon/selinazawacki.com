@@ -12,6 +12,7 @@ class AboutTxt extends React.Component {
     };
     this.startDrag = this.startDrag.bind(this);
     this.endDrag = this.endDrag.bind(this);
+    this.clickWindow = this.clickWindow.bind(this);
   }
 
   startDrag(e) {
@@ -31,6 +32,11 @@ class AboutTxt extends React.Component {
     this.props.incrementZ();
   }
 
+  clickWindow() {
+    this.props.aboutTxtZIndex(this.props.currentZ + 1);
+    this.props.incrementZ();
+  }
+
   render() {
     const styles = {
       top: this.props.aboutTxt.position[1],
@@ -42,7 +48,7 @@ class AboutTxt extends React.Component {
     if (this.props.aboutTxt.txt === true) {
       return (
         <Draggable handle="strong" onStart={this.startDrag} onStop={this.endDrag}>
-        <div className="window" style={styles}> 
+        <div className="window" style={styles} onClick={this.clickWindow}> 
           <strong className="cursor"><Topbar text='about.txt' close={this.props.aboutTxtClose}/></strong>
           <GreyBarTxt />
           <div className="window-cont">

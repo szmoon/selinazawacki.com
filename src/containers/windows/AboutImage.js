@@ -13,6 +13,7 @@ class AboutImage extends React.Component {
     };
     this.startDrag = this.startDrag.bind(this);
     this.endDrag = this.endDrag.bind(this);
+    this.clickWindow = this.clickWindow.bind(this);
   }
 
   startDrag(e) {
@@ -32,6 +33,11 @@ class AboutImage extends React.Component {
     this.props.incrementZ();
   }
 
+  clickWindow() {
+    this.props.aboutImageZIndex(this.props.currentZ + 1);
+    this.props.incrementZ();
+  }
+
   render() {
     const styles = {
       top: this.props.aboutImage.position[1],
@@ -42,12 +48,12 @@ class AboutImage extends React.Component {
     if (this.props.aboutImage.image === true) {
       return (
         <Draggable handle="strong" onStart={this.startDrag} onStop={this.endDrag}>
-        <div className="window-image" style={styles}> 
-          <strong className="cursor"><Topbar text='about.png' close={this.props.aboutImageClose}/></strong>
-          <GreyBarExplorer />
-          <div className="window-cont">
-            <img src={selinaImage} alt='selina-png' className='image'/>
-          </div>
+          <div className="window-image" style={styles} onClick={this.clickWindow}> 
+            <strong className="cursor"><Topbar text='about.png' close={this.props.aboutImageClose}/></strong>
+            <GreyBarExplorer />
+            <div className="window-cont">
+              <img src={selinaImage} alt='selina-png' className='image'/>
+            </div>
         </div>
         </Draggable>
       );
