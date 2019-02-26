@@ -17,6 +17,11 @@ const defaultState = {
     position:[80, 300],
     zIndex: 0
   },
+  contactTxt: {
+    open: false,
+    position:[450, 480],
+    zIndex: 0
+  },
   aboutImage: {
     open: false,
     position:[660, 150],

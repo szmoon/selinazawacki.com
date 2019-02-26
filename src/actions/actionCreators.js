@@ -82,6 +82,34 @@ export function aboutImageZIndex(zIndex) {
   }
 }
 
+export function contactTxtOpen(zIndex) {
+  return {
+    type: 'CONTACT_TXT_OPEN',
+    zIndex
+  }
+}
+
+export function contactTxtClose(index) {
+  return {
+    type: 'CONTACT_TXT_CLOSE',
+    index
+  }
+}
+
+export function contactTxtPosition(index) {
+  return {
+    type: 'CONTACT_TXT_POSITION',
+    index
+  }
+}
+
+export function contactTxtZIndex(zIndex) {
+  return {
+    type: 'CONTACT_TXT_ZINDEX',
+    zIndex
+  }
+}
+
 export function networkWindowOpen(zIndex) {
   return {
     type: 'NETWORK_WINDOW_OPEN',

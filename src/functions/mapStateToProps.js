@@ -25,6 +25,12 @@ var exports = module.exports = {
     };
   },
 
+  contactTxt: function(state) {
+    return {
+      contactTxt: state.contactTxt
+    };
+  },
+
   network: function(state) {
     return {
       networkWindow: state.networkWindow
