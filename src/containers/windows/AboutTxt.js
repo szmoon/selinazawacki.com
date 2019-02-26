@@ -52,12 +52,13 @@ class AboutTxt extends React.Component {
           <strong className="cursor"><Topbar text='about.txt' close={this.props.aboutTxtClose}/></strong>
           <GreyBarTxt />
           <div className="window-cont">
+          <p><u>Selina Chang-Yi Zawacki</u>: Analog Girl in a Digital World</p>
+          <br></br>
           <p>Full-stack software engineer specialized in creating Node.js and PHP APIs, and experienced with cloud services. Also experienced in circuit design and the Arduino language.</p>
           <br></br>
           <p>Love teaching and always looking for opportunities to do outreach to get young women, minorities and low income students interested in technology.</p>
           <br></br>
-          <p>Website created using React/Redux. Continually adding on to it in my spare time. :)</p>
-          <p>Last updated: 2/26/19</p>
+          <p>Website created using React/Redux. <br></br>Last updated: 2/26/19</p>
           </div>
         </div>
         </Draggable>
